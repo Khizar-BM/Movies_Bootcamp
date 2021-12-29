@@ -1,5 +1,7 @@
 import './App.css';
 import TableComponent from "./components/TableComponent";
+import {useEffect, useState} from "react";
+import PaginationButtonComponent from "./components/PaginationButtonComponent";
 
 const movies = [{
     id: 1,
@@ -61,13 +63,42 @@ const movies = [{
     genre: "Action",
     rating: 9,
     release_year: "2008"
+},{
+    id: 11,
+    name: "The Dark Knight Rises",
+    genre: "Action",
+    rating: 9,
+    release_year: "2008"
 }]
 
 function App() {
+    const [pageCount, setPageCount] = useState(0);
+    const [moviesOnPage, setMoviesOnPage] = useState([]);
+    useEffect(() => {
+        if (movies.length > 5){
+            setMoviesOnPage(movies.slice(0,5))
+        }
+        else {
+            setMoviesOnPage(movies)
+        }
+
+        setPageCount(Math.ceil(movies.length/5));
+    }, []);
+
+    const changePage = (pageNumber) => {
+        setMoviesOnPage(movies.slice((pageNumber-1)*5,pageNumber*5))
+
+    }
+
     return (
         <div className='container'>
             <h1 className='title'>Movies</h1>
-            <TableComponent movies={movies}/>
+            <TableComponent movies={moviesOnPage}/>
+            <div className='btn-container'>
+                {[...Array(pageCount)].map((x, i) =>
+                    <PaginationButtonComponent key={i} pageNumber={i+1} onClick={changePage}/>
+                )}
+            </div>
         </div>
     );
 }

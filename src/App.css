@@ -12,3 +12,11 @@
     text-align: center;
     font-size: 35px ;
 }
+.btn-container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 25%;
+}
