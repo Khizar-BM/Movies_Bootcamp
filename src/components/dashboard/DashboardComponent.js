@@ -3,6 +3,7 @@ import movies from "../../MovieList";
 import TableComponent from "../table/TableComponent";
 import PaginationButtonComponent from "../../utils/pagination/PaginationButtonComponent";
 import classes from "./DashboardComponent.module.css";
+import FilterComponent from "../filter/FilterComponent";
 
 function DashboardComponent() {
     const [pageCount, setPageCount] = useState(0);
@@ -26,6 +27,9 @@ function DashboardComponent() {
     return (
         <div className={classes.container}>
             <h1 className={classes.title}>Movies</h1>
+            <FilterComponent filterName='Genre' filterList={[...new Set(movies.map(movie => movie.genre))]}/>
+            <FilterComponent filterName='Rating' filterList={[...new Set(movies.map(movie => movie.rating))]}/>
+            <FilterComponent filterName='Year' filterList={[...new Set(movies.map(movie => movie.release_year))]}/>
             <TableComponent movies={moviesOnPage}/>
             {pageCount !== 0 ? <div className={classes.btncontainer}>
                 {[...Array(pageCount)].map((x, i) =>
