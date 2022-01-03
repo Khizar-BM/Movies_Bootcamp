@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./TableComponent.module.css";
+import classes from './TableComponent.module.css'
 const TableComponent = ({movies}) => {
     return (<table>
         <thead>
