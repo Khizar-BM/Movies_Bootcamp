@@ -6,9 +6,9 @@ import classes from "./DashboardComponent.module.css";
 import FilterComponent from "../filter/FilterComponent";
 
 function DashboardComponent() {
-    const [genre, setGenre] = useState(null);
-    const [rating, setRating] = useState(null);
-    const [year, setYear] = useState(null);
+    const [genre, setGenre] = useState('');
+    const [rating, setRating] = useState('');
+    const [year, setYear] = useState('');
     const [pageCount, setPageCount] = useState(0);
     const [moviesOnPage, setMoviesOnPage] = useState([]);
     const [movies, setMovies] = useState([...moviesConstant]);
