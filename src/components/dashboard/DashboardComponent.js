@@ -6,6 +6,9 @@ import classes from "./DashboardComponent.module.css";
 import FilterComponent from "../filter/FilterComponent";
 
 function DashboardComponent() {
+    const [genre, setGenre] = useState(null);
+    const [rating, setRating] = useState(null);
+    const [year, setYear] = useState(null);
     const [pageCount, setPageCount] = useState(0);
     const [moviesOnPage, setMoviesOnPage] = useState([]);
     const [movies, setMovies] = useState([...moviesConstant]);
@@ -20,29 +23,35 @@ function DashboardComponent() {
 
     }, [movies]);
 
+
     const changePage = (pageNumber) => {
         setMoviesOnPage(movies.slice((pageNumber - 1) * 5, pageNumber * 5));
+    }
 
-    }
-    const onGenreChange = (genre) => {
-        setMovies(movies.filter(movie => movie.genre === genre));
-    }
-    const onRatingChange = (rating) => {
-        setMovies(movies.filter(movie => movie.rating >= rating));
-    }
-    const onYearChange = (year) => {
-        setMovies(movies.filter(movie => movie.release_year === year));
-    }
+    useEffect(() => {
+        let tempMovies = [...moviesConstant];
+        if (genre) {
+            tempMovies = tempMovies.filter(tempMovie => tempMovie.genre === genre);
+        }
+        if (rating) {
+            tempMovies = tempMovies.filter(tempMovie => tempMovie.rating >= rating);
+        }
+        if (year) {
+            tempMovies = tempMovies.filter(tempMovie => tempMovie.release_year === year);
+        }
+        setMovies([...tempMovies])
+    }, [genre, rating, year]);
+
 
     return (
         <div className={classes.container}>
             <h1 className={classes.title}>Movies</h1>
             <div className={classes.filtercontainer}>
-                <FilterComponent filterName='Genre' filterList={[...new Set(moviesConstant.map(movie => movie.genre))].sort()} onOptionChange={onGenreChange}/>
-                <FilterComponent filterName='Rating' filterList={[...new Set(moviesConstant.map(movie => movie.rating))].sort()} onOptionChange={onRatingChange}/>
-                <FilterComponent filterName='Year' filterList={[...new Set(moviesConstant.map(movie => movie.release_year))].sort()} onOptionChange={onYearChange}/>
+                <FilterComponent filterName='Genre' filterList={[...new Set(moviesConstant.map(movie => movie.genre))].sort()} onOptionChange={setGenre}/>
+                <FilterComponent filterName='Rating' filterList={[...new Set(moviesConstant.map(movie => movie.rating))].sort()} onOptionChange={setRating}/>
+                <FilterComponent filterName='Year' filterList={[...new Set(moviesConstant.map(movie => movie.release_year))].sort()} onOptionChange={setYear}/>
             </div>
-            <TableComponent movies={moviesOnPage}/>
+            {movies.length > 0 ? <TableComponent movies={moviesOnPage}/> : <h4>Sorry, no movies match your search!</h4>}
             {pageCount !== 0 ? <div className={classes.btncontainer}>
                 {[...Array(pageCount)].map((x, i) =>
                     <PaginationButtonComponent key={i} pageNumber={i + 1} onClick={changePage}/>
