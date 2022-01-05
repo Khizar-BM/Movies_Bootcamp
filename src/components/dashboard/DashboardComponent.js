@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import moviesConstant from "../../MovieList";
+import {externalData,ratingList,genreList,yearList} from "../../ExternalData";
 import TableComponent from "../table/TableComponent";
 import PaginationButtonComponent from "../../utils/pagination/PaginationButtonComponent";
 import classes from "./DashboardComponent.module.css";
@@ -11,7 +11,7 @@ function DashboardComponent() {
     const [year, setYear] = useState('');
     const [pageCount, setPageCount] = useState(0);
     const [moviesOnPage, setMoviesOnPage] = useState([]);
-    const [movies, setMovies] = useState([...moviesConstant]);
+    const [movies, setMovies] = useState([...externalData]);
     useEffect(() => {
         if (movies.length > 5) {
             setMoviesOnPage(movies.slice(0, 5));
@@ -29,7 +29,7 @@ function DashboardComponent() {
     }
 
     useEffect(() => {
-        let tempMovies = [...moviesConstant];
+        let tempMovies = [...externalData];
         if (genre) {
             tempMovies = tempMovies.filter(tempMovie => tempMovie.genre === genre);
         }
@@ -47,9 +47,9 @@ function DashboardComponent() {
         <div className={classes.container}>
             <h1 className={classes.title}>Movies</h1>
             <div className={classes.filtercontainer}>
-                <FilterComponent filterName='Genre' filterList={[...new Set(moviesConstant.map(movie => movie.genre))].sort()} onOptionChange={setGenre}/>
-                <FilterComponent filterName='Rating' filterList={[...new Set(moviesConstant.map(movie => movie.rating))].sort()} onOptionChange={setRating}/>
-                <FilterComponent filterName='Year' filterList={[...new Set(moviesConstant.map(movie => movie.release_year))].sort()} onOptionChange={setYear}/>
+                <FilterComponent filterName='Genre' filterList={genreList} onOptionChange={setGenre}/>
+                <FilterComponent filterName='Rating' filterList={ratingList} onOptionChange={setRating}/>
+                <FilterComponent filterName='Year' filterList={yearList} onOptionChange={setYear}/>
             </div>
             {movies.length > 0 ? <TableComponent movies={moviesOnPage}/> : <h4>Sorry, no movies match your search!</h4>}
             {pageCount !== 0 ? <div className={classes.btncontainer}>
