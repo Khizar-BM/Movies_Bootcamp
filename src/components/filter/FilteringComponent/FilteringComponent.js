@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import classes from "../../dashboard/DashboardComponent.module.css";
-import FilterComponent from "../FilterComponent/FilterComponent";
+import classes from "./FilteringComponent.module.css";
+import FilterOption from "../FilterOption/FilterOption";
 import {ratingList, genreList, yearList} from "../../../ExternalData"
 
 
-const FilteringLogicComponent = ({movieList, updateMovies}) => {
+const FilteringComponent = ({movieList, updateMovies}) => {
     const [genre, setGenre] = useState('');
     const [rating, setRating] = useState('');
     const [year, setYear] = useState('');
@@ -22,15 +22,15 @@ const FilteringLogicComponent = ({movieList, updateMovies}) => {
             tempMovies = tempMovies.filter(tempMovie => tempMovie.release_year === year);
         }
         updateMovies([...tempMovies])
-    }, [genre, rating, year]);
+    }, [genre, rating, year, movieList, updateMovies]);
 
 
     return (
         <div className={classes.filtercontainer}>
-            <FilterComponent filterName='Genre' filterList={filters.genreList} filterState={genre} onOptionChange={setGenre}/>
-            <FilterComponent filterName='Rating' filterList={filters.ratingList} filterState={rating} onOptionChange={setRating}/>
-            <FilterComponent filterName='Year' filterList={filters.yearList} filterState={year} onOptionChange={setYear}/>
+            <FilterOption filterName='Genre' filterList={filters.genreList} filterState={genre} onOptionChange={setGenre}/>
+            <FilterOption filterName='Rating' filterList={filters.ratingList} filterState={rating} onOptionChange={setRating}/>
+            <FilterOption filterName='Year' filterList={filters.yearList} filterState={year} onOptionChange={setYear}/>
         </div>);
 }
 
-export default FilteringLogicComponent;
+export default FilteringComponent;

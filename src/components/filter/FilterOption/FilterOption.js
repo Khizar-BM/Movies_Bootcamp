@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from "./FilterComponent.module.css"
+import classes from "./FilterOption.module.css"
 
-const FilterComponent = ({filterState,filterName, filterList, onOptionChange}) => {
+const FilterOption = ({filterState,filterName, filterList, onOptionChange}) => {
     return (<div className={classes.container}>
         <label htmlFor={filterName}><b>{filterName}:</b></label>
 
@@ -14,4 +14,4 @@ const FilterComponent = ({filterState,filterName, filterList, onOptionChange}) =
     </div>)
 }
 
-export default FilterComponent;
+export default FilterOption;
