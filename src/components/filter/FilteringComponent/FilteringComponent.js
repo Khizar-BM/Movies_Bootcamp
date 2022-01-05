@@ -27,9 +27,9 @@ const FilteringComponent = ({movieList, updateMovies}) => {
 
     return (
         <div className={classes.filtercontainer}>
-            <FilterOption filterName='Genre' filterList={filters.genreList} filterState={genre} onOptionChange={setGenre}/>
-            <FilterOption filterName='Rating' filterList={filters.ratingList} filterState={rating} onOptionChange={setRating}/>
-            <FilterOption filterName='Year' filterList={filters.yearList} filterState={year} onOptionChange={setYear}/>
+            <FilterOption filterName='Genre' filterList={filters.genreList} filterState={genre} setFilterState={setGenre}/>
+            <FilterOption filterName='Rating' filterList={filters.ratingList} filterState={rating} setFilterState={setRating}/>
+            <FilterOption filterName='Year' filterList={filters.yearList} filterState={year} setFilterState={setYear}/>
         </div>);
 }
 
