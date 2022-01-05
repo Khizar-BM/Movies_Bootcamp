@@ -1,4 +1,4 @@
-export const externalData = [{
+export const movieList = [{
     id: 1,
     name: "Avengers Endgame",
     genre: "Action",

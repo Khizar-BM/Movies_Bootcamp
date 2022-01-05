@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from "./FilterComponent.module.css"
 
-const FilterComponent = ({filterName, filterList, onOptionChange}) => {
+const FilterComponent = ({filterState,filterName, filterList, onOptionChange}) => {
     return (<div className={classes.container}>
         <label htmlFor={filterName}><b>{filterName}:</b></label>
 
-        <select name={filterName} id={filterName} onChange={(e) => {
+        <select name={filterName} id={filterName} value={filterState} onChange={(e) => {
             onOptionChange(e.target.value)
         }}>
             <option value={''}>--Please choose an option--</option>
