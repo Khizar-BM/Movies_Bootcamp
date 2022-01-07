@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import TableComponent from "../table/TableComponent";
-import PaginationComponent from "../Pagination/PaginationComponent/PaginationComponent";
-import classes from "./DashboardComponent.module.css";
-import FilteringComponent from "../filter/FilteringComponent/FilteringComponent";
+import TableComponent from "../../components/table/TableComponent";
+import PaginationComponent from "../../components/Pagination/PaginationComponent/PaginationComponent";
+import classes from "./AllMoviesPage.module.css";
+import FilteringComponent from "../../components/filter/FilteringComponent/FilteringComponent";
 import {movieList} from "../../ExternalData"
 
-const DashboardComponent = () => {
+const AllMoviesPage = ({allMovies}) => {
 
-    const [allMovies, setAllMovies] = useState([...movieList]); // Global state that will only be changed when movieList is requested from backend
     const [filteredMovies, setFilteredMovies] = useState([...movieList]);
     const [moviesOnPage, setMoviesOnPage] = useState([]);
 
@@ -21,4 +20,4 @@ const DashboardComponent = () => {
     );
 };
 
-export default DashboardComponent;
+export default AllMoviesPage;
