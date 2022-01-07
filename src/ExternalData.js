@@ -1,4 +1,4 @@
-const movies = [{
+export const movieList = [{
     id: 1,
     name: "Avengers Endgame",
     genre: "Action",
@@ -66,4 +66,7 @@ const movies = [{
         rating: 9,
         release_year: "2008"
     }]
-export default movies
+
+export const genreList = ["Action", "Adventure", "Sci-Fi", "Thriller", "Comedy", "Fantasy", "Horror", "Drama"];
+export const ratingList = [5, 6, 7, 8, 9];
+export const yearList = ["2015","2016","2017","2018","2019","2020","2021"];

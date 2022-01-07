@@ -1,39 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import movies from "../../MovieList";
+import React, {useState} from 'react';
 import TableComponent from "../table/TableComponent";
-import PaginationButtonComponent from "../../utils/pagination/PaginationButtonComponent";
+import PaginationComponent from "../Pagination/PaginationComponent/PaginationComponent";
 import classes from "./DashboardComponent.module.css";
+import FilteringComponent from "../filter/FilteringComponent/FilteringComponent";
+import {movieList} from "../../ExternalData"
 
-function DashboardComponent() {
-    const [pageCount, setPageCount] = useState(0);
+const DashboardComponent = () => {
+
+    const [allMovies, setAllMovies] = useState([...movieList]); // Global state that will only be changed when movieList is requested from backend
+    const [filteredMovies, setFilteredMovies] = useState([...movieList]);
     const [moviesOnPage, setMoviesOnPage] = useState([]);
-    useEffect(() => {
-        if (movies.length > 5) {
-            setMoviesOnPage(movies.slice(0, 5));
-            setPageCount(Math.ceil(movies.length / 5));
-        } else {
-            setMoviesOnPage(movies);
-            setPageCount(0);
-        }
-
-    }, []);
-
-    const changePage = (pageNumber) => {
-        setMoviesOnPage(movies.slice((pageNumber - 1) * 5, pageNumber * 5));
-
-    }
 
     return (
         <div className={classes.container}>
             <h1 className={classes.title}>Movies</h1>
-            <TableComponent movies={moviesOnPage}/>
-            {pageCount !== 0 ? <div className={classes.btncontainer}>
-                {[...Array(pageCount)].map((x, i) =>
-                    <PaginationButtonComponent key={i} pageNumber={i + 1} onClick={changePage}/>
-                )}
-            </div> : ''}
+            <FilteringComponent movieList={allMovies} updateMovies={setFilteredMovies}/>
+            {moviesOnPage.length > 0 ? <TableComponent movies={moviesOnPage}/> : <h4>Sorry, no movies match your search!</h4>}
+           <PaginationComponent filteredMovies={filteredMovies} setMoviesOnPage={setMoviesOnPage} />
         </div>
     );
-}
+};
 
 export default DashboardComponent;
