@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import classes from './TableComponent.module.css'
 const TableComponent = ({movies}) => {
     return (<table>
@@ -9,6 +9,7 @@ const TableComponent = ({movies}) => {
             <th>Genre</th>
             <th>Rating</th>
             <th>Release Year</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
