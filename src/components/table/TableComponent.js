@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate, Link} from 'react-router-dom'
 import classes from './TableComponent.module.css'
 const TableComponent = ({movies}) => {
     return (<table>
@@ -17,6 +18,7 @@ const TableComponent = ({movies}) => {
                 <td>{movie.genre}</td>
                 <td>{movie.rating}</td>
                 <td>{movie.release_year}</td>
+                <td><Link className={classes.editButton} to={`edit/${movie.id}`}>Edit</Link></td>
             </tr>
         })}
         </tbody>
