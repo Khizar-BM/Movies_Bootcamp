@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
 import classes from "./EditMoviesPage.module.css";
 import MovieForm from "../../components/MovieForm/MovieForm";
+import {AllMoviesContext} from "../../Context/AllMoviesStore";
 
-const EditMoviesPage = ({allMovies, setAllMovies}) => {
+const EditMoviesPage = () => {
+    const {allMovies, dispatch} = useContext(AllMoviesContext)
     const params = useParams();
     const navigate = useNavigate()
 
@@ -11,7 +13,7 @@ const EditMoviesPage = ({allMovies, setAllMovies}) => {
 
     const onFormSubmit = (e) => {
         e.preventDefault();
-        setAllMovies(allMovies.map(movieItem => (movieItem.id === movie.id ? movie : movieItem)))
+        dispatch({type: "EDIT", movie: movie})
         navigate("/", {replace: true});
 
     }
