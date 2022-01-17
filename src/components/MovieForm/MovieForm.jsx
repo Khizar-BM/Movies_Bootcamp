@@ -18,12 +18,12 @@ const MovieForm = ({movie, onFormSubmit, setMovie, btnText}) => {
 
             <div className={classes.inputContainer}>
                 <label htmlFor="name" className={classes.inputLabel}><b>Movie Title:</b> </label>
-                <input type="text" name="name" id="name" value={movie.name} onChange={onFormChange} required/>
+                <input type="text" placeholder="Enter movie title" name="name" id="name" value={movie.name} onChange={onFormChange} required/>
             </div>
 
             <div className={classes.inputContainer}>
                 <label htmlFor="rating" className={classes.inputLabel}><b>Rating:</b> </label>
-                <input type="number" name="rating" id="email" max={10} min={1} step={0.1}
+                <input type="number" placeholder="Enter movie rating" name="rating" id="email" max={10} min={1} step={0.1}
                        value={isNaN(movie.rating) ? "" : movie.rating} onChange={onFormChange} required/>
             </div>
 
