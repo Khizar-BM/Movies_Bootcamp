@@ -14,7 +14,7 @@ const AllMoviesPage = () => {
     const [moviesOnPage, setMoviesOnPage] = useState([]);
 
     useEffect(() => {
-        if (allMovies.length === 0) {
+        if (!allMovies.length) {
             dispatch({type: "LOAD-MOVIES", movies: movieList})
         }
 

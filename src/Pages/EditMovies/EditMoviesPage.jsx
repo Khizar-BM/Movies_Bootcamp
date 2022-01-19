@@ -15,6 +15,7 @@ const EditMoviesPage = () => {
         e.preventDefault();
         dispatch({type: "EDIT", movie: movie})
         navigate("/", {replace: true});
+        console.log(movie)
 
     }
 
