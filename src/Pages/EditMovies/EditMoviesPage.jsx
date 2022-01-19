@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
 import classes from "./EditMoviesPage.module.css";
 import MovieForm from "../../components/MovieForm/MovieForm";
-import MoviesContextHOC from "../../Utils/MoviesContextHOC";
+import {MoviesContextHoc} from "../../Context/AllMoviesStore";
 
-const EditMoviesPage = MoviesContextHOC(({allMovies, dispatch}) => {
+
+const EditMoviesPage = MoviesContextHoc(({allMovies, dispatch}) => {
     const params = useParams();
     const navigate = useNavigate()
 

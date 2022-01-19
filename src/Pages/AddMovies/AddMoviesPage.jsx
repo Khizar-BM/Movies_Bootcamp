@@ -2,9 +2,9 @@ import React, { useState} from 'react';
 import classes from "../EditMovies/EditMoviesPage.module.css";
 import MovieForm from "../../components/MovieForm/MovieForm";
 import {useNavigate} from "react-router-dom";
-import MoviesContextHOC from "../../Utils/MoviesContextHOC";
+import {MoviesContextHoc} from "../../Context/AllMoviesStore";
 
-const AddMoviesPage = MoviesContextHOC(({dispatch}) => {
+const AddMoviesPage = MoviesContextHoc(({dispatch}) => {
     const navigate = useNavigate()
 
     const [movie, setMovie] = useState({

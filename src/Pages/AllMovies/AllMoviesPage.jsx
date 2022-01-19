@@ -5,9 +5,9 @@ import FilteringComponent from "../../components/filter/FilteringComponent/Filte
 import classes from "./AllMoviesPage.module.css";
 import {Link} from "react-router-dom";
 import {movieList} from "../../ExternalData";
-import MoviesContextHOC from "../../Utils/MoviesContextHOC";
+import {MoviesContextHoc} from "../../Context/AllMoviesStore";
 
-const AllMoviesPage = MoviesContextHOC(({allMovies, dispatch}) => {
+const AllMoviesPage = MoviesContextHoc(({allMovies, dispatch}) => {
 
     const [filteredMovies, setFilteredMovies] = useState([...allMovies]);
     const [moviesOnPage, setMoviesOnPage] = useState([]);

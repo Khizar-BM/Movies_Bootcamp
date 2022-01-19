@@ -1,6 +1,22 @@
-import React, {createContext, useReducer} from 'react';
+import React, {createContext, useContext, useReducer} from 'react';
 
 export const AllMoviesContext = createContext({})
+
+export const MoviesContextHoc = Component => props => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {allMovies, dispatch} = useContext(AllMoviesContext)
+    const newProps = {
+        allMovies,
+        dispatch,
+        ...props
+    }
+    return (<Component {...newProps}/>)
+
+
+}
+
+
+
 const reducer = (state, action) => {
     switch (action.type) {
         case "ADD":
