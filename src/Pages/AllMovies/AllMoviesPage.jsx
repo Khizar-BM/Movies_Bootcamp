@@ -1,14 +1,13 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import TableComponent from "../../components/table/TableComponent";
 import PaginationComponent from "../../components/Pagination/PaginationComponent/PaginationComponent";
 import FilteringComponent from "../../components/filter/FilteringComponent/FilteringComponent";
 import classes from "./AllMoviesPage.module.css";
 import {Link} from "react-router-dom";
-import {AllMoviesContext} from "../../Context/AllMoviesStore";
 import {movieList} from "../../ExternalData";
+import MoviesContextHOC from "../../Utils/MoviesContextHOC";
 
-const AllMoviesPage = () => {
-    const {allMovies, dispatch} = useContext(AllMoviesContext)
+const AllMoviesPage = MoviesContextHOC(({allMovies, dispatch}) => {
 
     const [filteredMovies, setFilteredMovies] = useState([...allMovies]);
     const [moviesOnPage, setMoviesOnPage] = useState([]);
@@ -36,6 +35,6 @@ const AllMoviesPage = () => {
             <PaginationComponent filteredMovies={filteredMovies} setMoviesOnPage={setMoviesOnPage}/>
         </div>
     );
-};
+})
 
 export default AllMoviesPage;

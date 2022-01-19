@@ -1,11 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
 import classes from "./EditMoviesPage.module.css";
 import MovieForm from "../../components/MovieForm/MovieForm";
-import {AllMoviesContext} from "../../Context/AllMoviesStore";
+import MoviesContextHOC from "../../Utils/MoviesContextHOC";
 
-const EditMoviesPage = () => {
-    const {allMovies, dispatch} = useContext(AllMoviesContext)
+const EditMoviesPage = MoviesContextHOC(({allMovies, dispatch}) => {
     const params = useParams();
     const navigate = useNavigate()
 
@@ -15,7 +14,6 @@ const EditMoviesPage = () => {
         e.preventDefault();
         dispatch({type: "EDIT", movie: movie})
         navigate("/", {replace: true});
-        console.log(movie)
 
     }
 
@@ -23,7 +21,7 @@ const EditMoviesPage = () => {
         <h1 className={classes.title}>Edit Movie</h1>
         <MovieForm movie={movie} setMovie={setMovie} onFormSubmit={onFormSubmit} btnText={"Save"}/>
     </div>)
-}
+})
 
 
 export default EditMoviesPage;
