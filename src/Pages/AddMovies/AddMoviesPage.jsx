@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 import classes from "../EditMovies/EditMoviesPage.module.css";
 import MovieForm from "../../components/MovieForm/MovieForm";
 import {useNavigate} from "react-router-dom";
+import {MoviesContextHoc} from "../../Context/AllMoviesStore";
 
-const AddMoviesPage = ({allMovies, setAllMovies}) => {
+const AddMoviesPage = MoviesContextHoc(({dispatch}) => {
     const navigate = useNavigate()
 
     const [movie, setMovie] = useState({
@@ -16,7 +17,7 @@ const AddMoviesPage = ({allMovies, setAllMovies}) => {
 
     const onFormSubmit = (e) => {
         e.preventDefault();
-        setAllMovies([...allMovies, {...movie, id: allMovies.length + 1}])
+        dispatch({type: "ADD", movie: movie})
         navigate("/", {replace: true});
 
     }
@@ -26,6 +27,6 @@ const AddMoviesPage = ({allMovies, setAllMovies}) => {
         <h1 className={classes.title}>Add Movie</h1>
         <MovieForm movie={movie} setMovie={setMovie} onFormSubmit={onFormSubmit} btnText={"Add"}/>
     </div>)
-}
+})
 
 export default AddMoviesPage;
