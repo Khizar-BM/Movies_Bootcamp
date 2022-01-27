@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Rating from '@mui/material/Rating';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,6 +13,21 @@ import {Link} from "react-router-dom";
 import {TableFooter, TablePagination} from "@mui/material";
 
 const TableComponent = ({movies}) => {
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
+
+    const emptyRows =
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - movies.length) : 0;
+
     return (<TableContainer component={Paper}>
         <Table sx={{minWidth: 650}} aria-label="simple table">
             <TableHead>
@@ -25,7 +40,10 @@ const TableComponent = ({movies}) => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {movies.map((movie) => (
+                {(rowsPerPage > 0
+                        ? movies.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        : movies
+                ).map((movie) => (
                     <TableRow
                         key={movie.id}
                         sx={{'&:last-child td, &:last-child th': {border: 0}}}
@@ -41,19 +59,22 @@ const TableComponent = ({movies}) => {
                                                               to={`edit/${movie.id}`}><EditIcon/></IconButton></TableCell>
                     </TableRow>
                 ))}
+                {emptyRows > 0 && (
+                    <TableRow style={{height: 53 * emptyRows}}>
+                        <TableCell colSpan={6}/>
+                    </TableRow>
+                )}
             </TableBody>
             <TableFooter>
                 <TableRow>
                     <TablePagination
-                        rowsPerPageOptions={[5, 10, 25, 100]}
+                        rowsPerPageOptions={[5, 10]}
                         component="div"
-                        count={11}
-                        rowsPerPage={5}
-                        page={0}
-                        onPageChange={() => {
-                        }}
-                        onRowsPerPageChange={() => {
-                        }}
+                        count={movies.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
                     />
                 </TableRow>
             </TableFooter>
