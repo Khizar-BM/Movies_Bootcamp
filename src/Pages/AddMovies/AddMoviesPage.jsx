@@ -11,7 +11,7 @@ const AddMoviesPage = MoviesContextHoc(({dispatch}) => {
         id: "",
         name: "",
         genre: "",
-        rating: "",
+        rating: 0,
         release_year: ""
     });
 
