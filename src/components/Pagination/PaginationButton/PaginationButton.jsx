@@ -1,8 +1,9 @@
 import React from 'react';
-import classes from "./PaginationButton.module.css";
+import {Button} from "./PaginationButton.style";
+
 const PaginationButton = ({pageNumber, onClick}) => {
-    return(
-        <button className={classes.btn} onClick={()=> onClick(pageNumber)}>{pageNumber}</button>)
+    return (
+        <Button onClick={() => onClick(pageNumber)}>{pageNumber}</Button>)
 }
 
 export default PaginationButton;

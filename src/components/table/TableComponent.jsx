@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-import classes from './TableComponent.module.css'
+import {EditBtn, StyledTable} from "./Table.style";
+
 const TableComponent = ({movies}) => {
-    return (<table>
+    return (<StyledTable>
         <thead>
         <tr>
             <th>Title</th>
@@ -19,12 +19,12 @@ const TableComponent = ({movies}) => {
                 <td>{movie.genre}</td>
                 <td>{movie.rating}</td>
                 <td>{movie.release_year}</td>
-                <td><Link className={classes.editButton} to={`edit/${movie.id}`}>Edit</Link></td>
+                <td><EditBtn to={`edit/${movie.id}`}>Edit</EditBtn></td>
             </tr>
         })}
         </tbody>
 
-    </table>)
+    </StyledTable>)
 };
 
 export default TableComponent;

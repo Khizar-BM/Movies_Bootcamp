@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
-import classes from "./EditMoviesPage.module.css";
 import MovieForm from "../../components/MovieForm/MovieForm";
 import {MoviesContextHoc} from "../../Context/AllMoviesStore";
+import {Container, Title} from "../Movies.style";
 
 
 const EditMoviesPage = MoviesContextHoc(({allMovies, dispatch}) => {
@@ -18,10 +18,10 @@ const EditMoviesPage = MoviesContextHoc(({allMovies, dispatch}) => {
 
     }
 
-    return (<div className={classes.container}>
-        <h1 className={classes.title}>Edit Movie</h1>
+    return (<Container width="80%">
+        <Title>Edit Movie</Title>
         <MovieForm movie={movie} setMovie={setMovie} onFormSubmit={onFormSubmit} btnText={"Save"}/>
-    </div>)
+    </Container>)
 })
 
 
