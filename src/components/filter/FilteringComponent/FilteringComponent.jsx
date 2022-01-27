@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import classes from "./FilteringComponent.module.css";
 import FilterOption from "../FilterOption/FilterOption";
 import {ratingList, genreList, yearList} from "../../../ExternalData"
+import {FilterContainer} from "./FilterComponent.style";
 
 
 const FilteringComponent = ({movieList, updateMovies}) => {
@@ -27,14 +27,17 @@ const FilteringComponent = ({movieList, updateMovies}) => {
     }, [filters, movieList]);
 
     const onFilterChange = (e) => {
-    setFilters({...filters, [e.target.name]:e.target.value})
+        setFilters({...filters, [e.target.name]: e.target.value})
     }
     return (
-        <div className={classes.filtercontainer}>
-            <FilterOption title='Genre' filterName='genre' filterList={filterLists.genreList} filterState={filters.genre} setFilterState={onFilterChange}/>
-            <FilterOption title='Rating' filterName='rating' filterList={filterLists.ratingList} filterState={filters.rating} setFilterState={onFilterChange}/>
-            <FilterOption title='Year' filterName='year' filterList={filterLists.yearList} filterState={filters.year} setFilterState={onFilterChange}/>
-        </div>);
+        <FilterContainer>
+            <FilterOption title='Genre' filterName='genre' filterList={filterLists.genreList}
+                          filterState={filters.genre} setFilterState={onFilterChange}/>
+            <FilterOption title='Rating' filterName='rating' filterList={filterLists.ratingList}
+                          filterState={filters.rating} setFilterState={onFilterChange}/>
+            <FilterOption title='Year' filterName='year' filterList={filterLists.yearList} filterState={filters.year}
+                          setFilterState={onFilterChange}/>
+        </FilterContainer>);
 }
 
 export default FilteringComponent;

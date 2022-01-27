@@ -1,6 +1,6 @@
-import React, {useEffect,useState} from 'react';
-import classes from "./PaginationComponent.module.css";
+import React, {useEffect, useState} from 'react';
 import PaginationButton from "../PaginationButton/PaginationButton";
+import {BtnContainer} from "./PaginationComponent.style";
 
 const PaginationComponent = ({setMoviesOnPage, filteredMovies}) => {
 
@@ -22,11 +22,11 @@ const PaginationComponent = ({setMoviesOnPage, filteredMovies}) => {
         setMoviesOnPage(filteredMovies.slice((pageNumber - 1) * 5, pageNumber * 5));
     }
 
-    return(pageCount !== 0 ? <div className={classes.btncontainer}>
+    return (pageCount !== 0 ? <BtnContainer>
         {[...Array(pageCount)].map((x, i) =>
             <PaginationButton key={i} pageNumber={i + 1} onClick={changePage}/>
         )}
-    </div> : <></> )
+    </BtnContainer> : <></>)
 }
 
 export default PaginationComponent;

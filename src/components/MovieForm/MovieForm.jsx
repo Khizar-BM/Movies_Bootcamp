@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
-import classes from "./MovieForm.module.css";
 import FilterOption from "../filter/FilterOption/FilterOption";
 import {genreList, yearList} from "../../ExternalData";
+import {
+    BtnContainer,
+    FormBtn,
+    InputContainer,
+    MultiInputContainer,
+    StyledForm,
+    StyledInput,
+    StyledLabel
+} from "./MovieForm.style";
 
 const MovieForm = ({movie, onFormSubmit, setMovie, btnText}) => {
     const [filters, setFilters] = useState({genreList: genreList, yearList: yearList});
@@ -12,34 +20,35 @@ const MovieForm = ({movie, onFormSubmit, setMovie, btnText}) => {
         else
             setMovie({...movie, [e.target.name]: e.target.value})
 
-
     }
-    return (<form action="" className={classes.formExample} onSubmit={onFormSubmit}>
+    return (<StyledForm action="" onSubmit={onFormSubmit}>
 
-            <div className={classes.inputContainer}>
-                <label htmlFor="name" className={classes.inputLabel}><b>Movie Title:</b> </label>
-                <input type="text" placeholder="Enter movie title" name="name" id="name" value={movie.name} onChange={onFormChange} required/>
-            </div>
+            <InputContainer>
+                <StyledLabel htmlFor="name"><b>Movie Title:</b> </StyledLabel>
+                <StyledInput type="text" placeholder="Enter movie title" name="name" id="name" value={movie.name}
+                             onChange={onFormChange} required/>
+            </InputContainer>
 
-            <div className={classes.inputContainer}>
-                <label htmlFor="rating" className={classes.inputLabel}><b>Rating:</b> </label>
-                <input type="number" placeholder="Enter movie rating" name="rating" id="email" max={10} min={1} step={0.1}
-                       value={isNaN(movie.rating) ? "" : movie.rating} onChange={onFormChange} required/>
-            </div>
+            <InputContainer>
+                <StyledLabel htmlFor="rating"><b>Rating:</b> </StyledLabel>
+                <StyledInput type="number" placeholder="Enter movie rating" name="rating" id="email" max={10} min={1}
+                             step={0.1}
+                             value={isNaN(movie.rating) ? "" : movie.rating} onChange={onFormChange} required/>
+            </InputContainer>
 
-            <div className={classes.inputMultiContainer}>
+            <MultiInputContainer>
                 <FilterOption title='Genre' filterName='genre' filterList={filters.genreList} filterState={movie.genre}
                               setFilterState={onFormChange}/>
 
                 <FilterOption title='Year' filterName='release_year' filterList={filters.yearList}
                               filterState={movie.release_year} setFilterState={onFormChange}/>
-            </div>
+            </MultiInputContainer>
 
-            <div className={classes.btnContainer}>
-                <button className={classes.btn}>{btnText}</button>
-            </div>
+            <BtnContainer>
+                <FormBtn>{btnText}</FormBtn>
+            </BtnContainer>
 
-        </form>
+        </StyledForm>
     );
 }
 
