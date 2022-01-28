@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 export const Header = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
 `
 export const AddBtn = styled(Link)`

@@ -16,6 +16,15 @@ export const InputContainer = styled.div`
   padding: 0.5rem;
   width: 80%;
 `
+export const RatingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.75rem;
+  padding: 0.5rem;
+  width: 80%;
+`
 export const MultiInputContainer = styled.div`
   margin: 0.75rem;
   padding: 0.5rem;

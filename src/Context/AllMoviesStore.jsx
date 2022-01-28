@@ -11,11 +11,7 @@ export const MoviesContextHoc = Component => props => {
         ...props
     }
     return (<Component {...newProps}/>)
-
-
 }
-
-
 
 const reducer = (state, action) => {
     switch (action.type) {
