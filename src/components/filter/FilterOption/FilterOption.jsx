@@ -3,10 +3,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import classes from "./FilterOption.module.css";
 
 const FilterOption = ({title, filterState, filterName, filterList, setFilterState}) => {
     return (
-        <FormControl variant="standard" sx={{m: 1, minWidth: 210}}>
+        <FormControl variant="standard" className={classes.filter}>
             <InputLabel id="demo-simple-select-standard-label">{title}</InputLabel>
             <Select
                 labelId="demo-simple-select-standard-label"

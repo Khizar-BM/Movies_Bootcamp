@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {devices} from "../../utils/MediaQueries";
 
 export const StyledForm = styled.form`
   width: 50%;
@@ -6,6 +7,12 @@ export const StyledForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media only screen and ${devices.mobileL}{
+    width: 100%;
+  }
+  @media only screen and ${devices.tablet}{
+    width: 100%;
+  }
 `
 export const InputContainer = styled.div`
   display: flex;
@@ -15,6 +22,10 @@ export const InputContainer = styled.div`
   margin: 0.75rem;
   padding: 0.5rem;
   width: 80%;
+
+  @media only screen and ${devices.mobileL}{
+    width: 100%;
+  }
 `
 export const RatingContainer = styled.div`
   display: flex;
@@ -27,11 +38,31 @@ export const RatingContainer = styled.div`
 `
 export const MultiInputContainer = styled.div`
   margin: 0.75rem;
-  padding: 0.5rem;
-  width: 90%;
+  //padding: 0.5rem;
+  width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  
+  ${InputContainer}{
+    margin: 0;
+  }
+  
+  @media only screen and ${devices.laptop}{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+
+    ${InputContainer}{
+      margin: 0.75rem;
+    }
+  }
+
+  @media only screen and ${devices.mobileL}{
+    width: 100%;
+  }
 `
 export const BtnContainer = styled.div`
   display: flex;
