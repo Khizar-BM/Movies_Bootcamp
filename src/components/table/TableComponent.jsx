@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Rating from '@mui/material/Rating';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -27,6 +27,11 @@ const TableComponent = ({movies}) => {
 
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - movies.length) : 0;
+
+    useEffect(() => {
+       setPage(0)
+    }, [movies]);
+
 
     return (<TableContainer component={Paper}>
         <Table sx={{minWidth: 650}} aria-label="simple table">
