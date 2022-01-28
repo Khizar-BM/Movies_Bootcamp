@@ -1,0 +1,9 @@
+.rating{
+    font-size: 1.875rem
+}
+@media only screen and (max-width: 768px){
+    .rating{
+        font-size: 1.5rem;
+    }
+}
+

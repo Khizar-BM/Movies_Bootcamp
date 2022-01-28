@@ -11,6 +11,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import {Link} from "react-router-dom";
 import {TableFooter, TablePagination} from "@mui/material";
+import classes from "./Table.module.css";
 
 const TableComponent = ({movies}) => {
     const [page, setPage] = useState(0);
@@ -33,7 +34,7 @@ const TableComponent = ({movies}) => {
     }, [movies]);
 
 
-    return (<TableContainer component={Paper}>
+    return (<TableContainer component={Paper} className={classes.table}>
         <Table sx={{minWidth: 650}} aria-label="simple table">
             <TableHead>
                 <TableRow>

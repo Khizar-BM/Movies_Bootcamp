@@ -31,18 +31,26 @@ const MovieForm = ({movie, onFormSubmit, setMovie, btnText}) => {
 
 
             <MultiInputContainer>
-                <FilterOption title='Genre' filterName='genre' filterList={filters.genreList} filterState={movie.genre}
-                              setFilterState={onFormChange}/>
+                <InputContainer>
+                    <FilterOption title='Genre' filterName='genre' filterList={filters.genreList}
+                                  filterState={movie.genre}
+                                  setFilterState={onFormChange}
+                                  margin={0}/>
+                </InputContainer>
 
-                <FilterOption title='Year' filterName='release_year' filterList={filters.yearList}
-                              filterState={movie.release_year} setFilterState={onFormChange}/>
+                <InputContainer>
+                    <FilterOption title='Year' filterName='release_year' filterList={filters.yearList}
+                                  filterState={movie.release_year}
+                                  setFilterState={onFormChange}
+                                  margin={0}/>
+                </InputContainer>
             </MultiInputContainer>
 
             <RatingContainer>
                 <StyledLabel htmlFor="rating"><b>Rating:</b> </StyledLabel>
                 <Rating name="rating" value={movie.rating} precision={0.1} max={10}
-                        size="large"
-                        onChange={onRatingChange}/>
+                        onChange={onRatingChange}
+                />
             </RatingContainer>
             <BtnContainer>
                 <Button variant="contained" color="success" type="submit">{btnText}</Button>

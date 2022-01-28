@@ -8,6 +8,7 @@ import {Header} from "./AllMovies.style";
 import {Link} from "react-router-dom";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import IconButton from "@mui/material/IconButton";
+import classes from "./AllMovies.module.css";
 
 const AllMoviesPage = MoviesContextHoc(({allMovies, dispatch}) => {
 
@@ -26,7 +27,7 @@ const AllMoviesPage = MoviesContextHoc(({allMovies, dispatch}) => {
             <Header>
                 <FilteringComponent movieList={allMovies} updateMovies={setFilteredMovies}/>
                 <IconButton component={Link}
-                            to="/add" sx={{padding: "16px", ml: "10px"}}>
+                            to="/add" className={classes.addBtn}>
                     <AddCircleIcon color="primary" fontSize="large"/>
                 </IconButton>
             </Header>

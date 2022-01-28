@@ -29,14 +29,15 @@ const FilteringComponent = ({movieList, updateMovies}) => {
     const onFilterChange = (e) => {
         setFilters({...filters, [e.target.name]: e.target.value})
     }
+    const margin = 2;
     return (
         <FilterContainer>
             <FilterOption title='Genre' filterName='genre' filterList={filterLists.genreList}
-                          filterState={filters.genre} setFilterState={onFilterChange}/>
+                          filterState={filters.genre} setFilterState={onFilterChange} margin={margin}/>
             <FilterOption title='Rating' filterName='rating' filterList={filterLists.ratingList}
-                          filterState={filters.rating} setFilterState={onFilterChange}/>
+                          filterState={filters.rating} setFilterState={onFilterChange} margin={margin}/>
             <FilterOption title='Year' filterName='year' filterList={filterLists.yearList} filterState={filters.year}
-                          setFilterState={onFilterChange}/>
+                          setFilterState={onFilterChange} margin={margin}/>
         </FilterContainer>);
 }
 

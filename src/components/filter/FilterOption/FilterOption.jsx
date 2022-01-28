@@ -4,9 +4,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const FilterOption = ({title, filterState, filterName, filterList, setFilterState}) => {
+const FilterOption = ({title, filterState, filterName, filterList, setFilterState, margin}) => {
     return (
-        <FormControl variant="standard" sx={{m: 1, minWidth: 210}}>
+        <FormControl variant="standard" sx={{m:margin, minWidth:130,width:"100%"}}>
             <InputLabel id="demo-simple-select-standard-label">{title}</InputLabel>
             <Select
                 labelId="demo-simple-select-standard-label"
