@@ -1,0 +1,8 @@
+.table{
+    min-width: 500px;
+}
+@media only screen and (max-width: 425px){
+    .table{
+        min-width: 300px;
+    }
+}

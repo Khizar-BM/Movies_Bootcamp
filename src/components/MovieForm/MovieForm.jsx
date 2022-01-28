@@ -11,7 +11,6 @@ import {
 } from "./MovieForm.style";
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
-import classes from "./MovieForm.module.css";
 
 const MovieForm = ({movie, onFormSubmit, setMovie, btnText}) => {
     const [filters, setFilters] = useState({genreList: genreList, yearList: yearList});
@@ -32,13 +31,19 @@ const MovieForm = ({movie, onFormSubmit, setMovie, btnText}) => {
 
 
             <MultiInputContainer>
-                <InputContainer><FilterOption title='Genre' filterName='genre' filterList={filters.genreList}
-                                              filterState={movie.genre}
-                                              setFilterState={onFormChange}/></InputContainer>
+                <InputContainer>
+                    <FilterOption title='Genre' filterName='genre' filterList={filters.genreList}
+                                  filterState={movie.genre}
+                                  setFilterState={onFormChange}
+                                  margin={0}/>
+                </InputContainer>
 
-                <InputContainer><FilterOption title='Year' filterName='release_year' filterList={filters.yearList}
-                                              filterState={movie.release_year}
-                                              setFilterState={onFormChange}/></InputContainer>
+                <InputContainer>
+                    <FilterOption title='Year' filterName='release_year' filterList={filters.yearList}
+                                  filterState={movie.release_year}
+                                  setFilterState={onFormChange}
+                                  margin={0}/>
+                </InputContainer>
             </MultiInputContainer>
 
             <RatingContainer>

@@ -1,0 +1,27 @@
+.addBtn{
+    padding: 16px !important;
+    margin-left: 10px !important;
+}
+@media only screen and (max-width: 768px){
+    .addBtn{
+        position: absolute !important;
+        bottom: 3px !important;
+        right: 20px !important;
+    }
+}
+
+@media only screen and (max-width: 425px){
+    .addBtn{
+        position: absolute !important;
+        bottom: 8px !important;
+        right: -12px !important;
+    }
+}
+@media only screen and (max-width: 425px){
+    .addBtn{
+        position: absolute !important;
+        bottom: -37px !important;
+        right: -13px !important;
+    }
+}
+
